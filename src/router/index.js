@@ -5,11 +5,11 @@ import Posts from '@/components/Posts';
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Posts',
-      component: Posts,
-    },
-  ],
+    routes: [
+        {
+            path: '/',
+            name: 'Posts',
+            component: Posts,
+        },
+    ],
 });
