@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="hero-body">
                     <h1 class="title">
-                        <a href="/">My Blog</a>
+                       <router-link :to="'/'">My Blog</router-link>
                     </h1>
                 </div>
             </div>
