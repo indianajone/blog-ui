@@ -9,6 +9,7 @@
 
 <script>
 import TextView from '@/components/views/TextView';
+import ImageView from '@/components/views/ImageView';
 
 export default {
     name: 'Post',
