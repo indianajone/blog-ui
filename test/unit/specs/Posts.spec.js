@@ -1,5 +1,6 @@
 import { mount } from 'vue-test-utils';
 import Posts from '@/components/Posts';
+import { createRenderer } from 'vue-server-renderer';
 
 describe('Posts.vue', () => {
 
@@ -59,6 +60,19 @@ describe('Posts.vue', () => {
         button.trigger('click');
 
         expect(wrapper.findAll('.post-item').at(0).find('p').text()).toContain('Another Post');
+    });
+
+    it('should matches snapshot', () => {
+        const renderer = createRenderer();
+        renderer.renderToString(wrapper.vm, (err, str) => {
+
+            if (err) {
+                throw new Error(err);
+            }
+            expect(str).toMatchSnapshot();
+
+        });
+
     });
 
 });

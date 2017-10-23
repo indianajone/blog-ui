@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Posts.vue should matches snapshot 1`] = `
+<div class="posts level is-verticle">
+    <router-link to="/create" class="button ml-auto is-primary is-outlined">
+        New Post
+    </router-link>
+    <table class="table is-fullwidth is-striped">
+        <thead>
+            <tr>
+                <th class="post-title">Title</th>
+                <th class="post-date is-small">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="post-item">
+                <td>
+                    <div class="media">
+                        <!---->
+                        <div class="media-content">
+                            <div class="content">
+                                <p class="level">
+                                    <router-link to="/post/59eccf0e4e8b8f72705ac87d">
+                                        Other Post
+                                    </router-link>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>2017-11-22T17:01:16.051Z</td>
+            </tr>
+            <tr class="post-item">
+                <td>
+                    <div class="media">
+                        <!---->
+                        <div class="media-content">
+                            <div class="content">
+                                <p class="level">
+                                    <router-link to="/post/59eccf0e4e8b8f72705ac87d">
+                                        New Post
+                                    </router-link>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>2017-10-02T17:02:06.051Z</td>
+            </tr>
+            <tr class="post-item">
+                <td>
+                    <div class="media">
+                        <!---->
+                        <div class="media-content">
+                            <div class="content">
+                                <p class="level">
+                                    <router-link to="/post/59eccf0e4e8b8f72705ac87d">
+                                        Another Post
+                                    </router-link>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>2016-07-18T17:01:16.051Z</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+`;
