@@ -2,11 +2,13 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import axios from 'axios';
+import VueHtml5Editor from 'vue-html5-editor';
 
 import App from './App';
 import router from './router';
 
 Vue.config.productionTip = false;
+Vue.use(VueHtml5Editor);
 
 Vue.prototype.$http = axios.create({
     baseURL: 'http://localhost:3000'
