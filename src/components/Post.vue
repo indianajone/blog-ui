@@ -1,6 +1,6 @@
 <template>
     <div class="section is-flex is-verticle is-block-center">
-        <router-link class="button ml-auto is-primary is-outlined" :to="'/post/edit/' + post._id">
+        <router-link class="button ml-auto is-primary is-outlined" :to="'/edit/' + post._id">
             Edit
         </router-link>
         <component :is="view" :post="post"></component>

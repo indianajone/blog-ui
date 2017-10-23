@@ -1,6 +1,6 @@
 <template>
     <div class="section">
-        <h1 class="title is-size-3">Create Post</h1>
+        <h1 class="title is-size-3">{{ pageName }} Post</h1>
         <form class="form">
             <div class="field">
                 <div class="control">
@@ -11,7 +11,7 @@
                 <div class="control">
                     <div class="file has-name is-fullwidth">
                         <label class="file-label">
-                            <input class="file-input" type="file" name="image" @change="file">
+                            <input class="file-input" type="file" name="image" @change="onFileChange">
                             <span class="file-cta">
                                 <span class="file-icon">
                                     <i class="fa fa-upload"></i>
@@ -29,7 +29,7 @@
              </div>
             <div class="field">
                 <div class="control">
-                <vue-html5-editor :content="body" :height="500" @change="update"></vue-html5-editor>
+                <vue-html5-editor :content="body" :height="500" @change="onContentUpdate"></vue-html5-editor>
                 </div>
             </div>
             <div class="field is-grouped">
@@ -54,22 +54,38 @@
                 body: 'Start your story...'
             };
         },
-        methods: {
-            clear () {
-                this.title = null;
-                this.body = null;
+        computed: {
+            isEditMode() {
+                return this.$route.name === 'EditPost';
             },
-            file(e) {
+            pageName () {
+                return this.isEditMode ? 'Edit' : 'Create';
+            }
+        },
+        mounted() {
+            if (this.isEditMode) {
+                this.fetch();
+            }
+        },
+        methods: {
+            async fetch() {
+                try {
+                    const { id } = this.$route.params;
+                    const { data } = await this.$http.get(`/posts/${id}`);
+                    this.title = data.data.title;
+                    this.body = data.data.body;
+                } catch (e) {
+                    console.error(e);
+                }
+            },
+            onContentUpdate(content) {
+                this.body = content;
+            },
+            onFileChange(e) {
                 const files = e.target.files || e.dataTransfer.files;
                 if (files.length) {
                     this.image = files[0];
                 }
-            },
-            removeImage() {
-                this.image = null;
-            },
-            update(content) {
-                this.body = content;
             },
             async createPost() {
                 const formData = new FormData();
@@ -87,10 +103,15 @@
                     console.error(e);
                 }
             },
-            submit () {
+            submit() {
                 this.createPost().then(() => {
                     this.$router.go('/');
                 });
+            },
+            clear() {
+                this.title = null;
+                this.body = 'Start your story...';
+                this.image = null;
             }
         }
     };

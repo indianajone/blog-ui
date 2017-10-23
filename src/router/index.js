@@ -22,6 +22,11 @@ export default new Router({
             path: '/create',
             name: 'CreatePost',
             component: PostForm
+        },
+        {
+            path: '/edit/:id',
+            name: 'EditPost',
+            component: PostForm
         }
     ]
 });
