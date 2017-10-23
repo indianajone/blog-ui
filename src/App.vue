@@ -23,9 +23,17 @@ export default {
 
 <style lang="scss">
 @import "~bulma";
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+    #app {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .ml-auto {
+        margin-left: auto;
+    }
+
+    .is-verticle {
+        flex-direction: column;
+    }
 </style>

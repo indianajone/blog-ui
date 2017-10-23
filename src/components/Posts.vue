@@ -1,5 +1,8 @@
 <template>
-  <div class="posts">
+  <div class="posts level is-verticle">
+    <router-link class="button ml-auto is-primary is-outlined" :to="'/create'">
+        New Post
+    </router-link>
     <table class="table is-fullwidth is-striped">
       <thead>
         <tr>
@@ -13,7 +16,7 @@
              <div class="media" >
               <figure class="media-left" v-if="post.image">
                 <p class="image is-32x32">
-                  <img :src="post.image">
+                  <img :src="getImage(post.image)">
                 </p>
               </figure>
               <div class="media-content">
@@ -55,6 +58,9 @@ export default {
         }
     },
     methods: {
+        getImage(path) {
+            return `${this.$http.defaults.baseURL}/${path}`;
+        },
         sortBy(key) {
             this.key = key;
             this.reverse = !this.reverse;
