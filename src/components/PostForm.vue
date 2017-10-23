@@ -1,7 +1,7 @@
 <template>
     <div class="section">
         <h1 class="title is-size-3">{{ pageName }} Post</h1>
-        <form class="form">
+        <form class="form" @submit.prevent="submit">
             <div class="field">
                 <div class="control">
                 <input class="input" type="text" name="title" placeholder="What's it about..." v-model="title" required>
@@ -29,15 +29,15 @@
              </div>
             <div class="field">
                 <div class="control">
-                <vue-html5-editor :content="body" :height="500" @change="onContentUpdate"></vue-html5-editor>
+                    <vue-html5-editor :content="body" :height="500" @change="onContentUpdate"></vue-html5-editor>
                 </div>
             </div>
             <div class="field is-grouped">
                 <div class="control">
-                <button class="button is-link" type="button" @click="submit">Post</button>
+                    <button id="submit-btn" class="button is-link">Post</button>
                 </div>
                 <div class="control">
-                <button class="button is-text" type="button" @click="clear">Cancel</button>
+                    <button class="button is-text" type="button" @click="clear">Cancel</button>
                 </div>
             </div>
         </form>
@@ -108,7 +108,7 @@
             },
             submit() {
                 this.createPost().then(() => {
-                    this.$router.go('/');
+                    this.$router.push('/');
                 });
             },
             clear() {
