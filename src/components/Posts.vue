@@ -30,7 +30,7 @@
               </div>
             </div>
           </td>
-          <td>{{ post.createdAt }}</td>
+          <td>{{ post.createdAt | fromNow }}</td>
         </tr>
       </tbody>
     </table>

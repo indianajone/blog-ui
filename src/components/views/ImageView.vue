@@ -4,7 +4,7 @@
             <img class="image is-32x32" :src="this.getImage(post.image)" >
             <h1 class="title">
                 {{ post.title }}
-                <span class="subtitle">{{ post.createdAt }}</span>
+                <span class="subtitle">{{ post.createdAt | fromNow }}</span>
             </h1>
         </div>
         <p v-html="post.body"></p>

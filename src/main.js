@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import axios from 'axios';
+import moment from 'moment';
 import VueHtml5Editor from 'vue-html5-editor';
 
 import App from './App';
@@ -14,6 +15,7 @@ Vue.prototype.$http = axios.create({
     baseURL: 'http://localhost:3000'
 });
 
+Vue.filter('fromNow', value => moment(value).fromNow());
 
 /* eslint-disable no-new */
 new Vue({
