@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostForm.vue should render as create mode. 1`] = `
+<div class="section">
+    <h1 class="title is-size-3">Create Post</h1>
+    <form class="form">
+        <div class="field">
+            <div class="control"><input type="text" name="title" placeholder="What's it about..." required="required" class="input"></div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <div class="file has-name is-fullwidth"><label class="file-label"><input type="file" name="image" class="file-input"> <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span> <span class="file-label">
+                                 Choose a thumbnial...
+                            </span></span> <span class="file-name">
+                            
+                        </span></label></div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <vue-html5-editor content="Start your story..." height="500"></vue-html5-editor>
+            </div>
+        </div>
+        <div class="field is-grouped">
+            <div class="control"><button id="submit-btn" class="button is-link">Post</button></div>
+            <div class="control"><button type="button" class="button is-text">Cancel</button></div>
+        </div>
+    </form>
+</div>
+`;
+
+exports[`PostForm.vue should render as edit mode. 1`] = `
+<div class="section">
+    <h1 class="title is-size-3">Edit Post</h1>
+    <form class="form">
+        <div class="field">
+            <div class="control"><input type="text" name="title" placeholder="What's it about..." required="required" class="input"></div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <div class="file has-name is-fullwidth"><label class="file-label"><input type="file" name="image" class="file-input"> <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span> <span class="file-label">
+                                 Choose a thumbnial...
+                            </span></span> <span class="file-name">
+                            
+                        </span></label></div>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <vue-html5-editor content="Start your story..." height="500"></vue-html5-editor>
+            </div>
+        </div>
+        <div class="field is-grouped">
+            <div class="control"><button id="submit-btn" class="button is-link">Post</button></div>
+            <div class="control"><button type="button" class="button is-text">Cancel</button></div>
+        </div>
+    </form>
+</div>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post.vue should matches snapshot 1`] = `
+<div class="section is-flex is-verticle is-block-center">
+    <router-link to="/edit/59eccf0e4e8b8f72705ac87d" class="button ml-auto is-primary is-outlined">
+        Edit
+    </router-link>
+    <div class="post">
+        <h1 class="title">
+            New Post
+            <span class="subtitle">2017-10-02T17:02:06.051Z</span></h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    </div>
+</div>
+`;
