@@ -91,7 +91,10 @@
                 const formData = new FormData();
                 formData.append('title', this.title);
                 formData.append('body', this.body);
-                formData.append('image', this.image);
+
+                if (this.image) {
+                    formData.append('image', this.image);
+                }
 
                 try {
                     await this.$http.post('/posts', formData, {
