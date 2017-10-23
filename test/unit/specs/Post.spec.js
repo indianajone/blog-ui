@@ -1,6 +1,6 @@
+import Post from '@/components/Post';
 import { mount } from 'vue-test-utils';
 import { createRenderer } from 'vue-server-renderer';
-import Post from '@/components/Post';
 
 describe('Post.vue', () => {
 
@@ -40,7 +40,6 @@ describe('Post.vue', () => {
             expect(str).toMatchSnapshot();
 
         });
-
     });
 
 });
