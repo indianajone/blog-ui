@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "test": "jest --coverage",
+    "test": "npm run lint && jest",
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
