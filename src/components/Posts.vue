@@ -46,7 +46,7 @@ export default {
         return {
             posts: null,
             key: 'createdAt',
-            reverse: false
+            reverse: true
         };
     },
     mounted() {
