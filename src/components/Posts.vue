@@ -81,9 +81,12 @@ export default {
 @import "~bulma/sass/utilities/_all";
 @import "~bulma/sass/layout/section";
 .posts {
-  @extend .section;
-  .is-small {
-    width: 30%;
-  }
+    @extend .section;
+    th {
+        cursor: pointer;
+    }
+    .is-small {
+        width: 30%;
+    }
 }
 </style>
