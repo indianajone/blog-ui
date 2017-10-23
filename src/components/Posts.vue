@@ -6,12 +6,12 @@
     <table class="table is-fullwidth is-striped">
       <thead>
         <tr>
-          <th @click="sortBy('title')">Title</th>
-          <th class="is-small" @click="sortBy('createdAt')">Date</th>
+          <th class="post-title" @click="sortBy('title')">Title</th>
+          <th class="post-date is-small" @click="sortBy('createdAt')">Date</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="post in sortedPosts" :key="post._id">
+        <tr class="post-item" v-for="post in sortedPosts" :key="post._id">
           <td>
              <div class="media" >
               <figure class="media-left" v-if="post.image">

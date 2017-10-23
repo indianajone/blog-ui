@@ -1,11 +1,64 @@
-import Vue from 'vue';
+import { mount } from 'vue-test-utils';
 import Posts from '@/components/Posts';
 
 describe('Posts.vue', () => {
-    it('should render correct contents', () => {
-        const Constructor = Vue.extend(Posts);
-        const vm = new Constructor().$mount();
-        expect(vm.$el.className).to.be.contains('posts');
-    });
-});
 
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = mount(Posts, {
+            mocks: {
+                $http: {
+                    defaults: { baseURL: 'localhost' },
+                    get() {
+                        return { data: {
+                            data: [
+                                {
+                                    title: 'New Post',
+                                    body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                                    _id: '59eccf0e4e8b8f72705ac87d',
+                                    createdAt: '2017-10-02T17:02:06.051Z',
+                                    type: 'text'
+                                },
+                                {
+                                    title: 'Other Post',
+                                    body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                                    _id: '59eccf0e4e8b8f72705ac87d',
+                                    createdAt: '2017-11-22T17:01:16.051Z',
+                                    type: 'text'
+                                },
+                                {
+                                    title: 'Another Post',
+                                    body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                                    _id: '59eccf0e4e8b8f72705ac87d',
+                                    createdAt: '2016-07-18T17:01:16.051Z',
+                                    type: 'text'
+                                }
+                            ]
+                        } };
+                    }
+                }
+            }
+        });
+    });
+
+    it('should render all posts.', () => {
+        const rows = wrapper.findAll('.post-item');
+
+        expect(rows.at(0).find('p').text()).toContain('Other Post');
+        expect(rows).toHaveLength(3);
+    });
+
+    it('should return full image path.', () => {
+        expect(wrapper.vm.getImage('/uploads/image.jpg'))
+            .toEqual('localhost//uploads/image.jpg');
+    });
+
+    it('should sort posts by alphabet.', () => {
+        const button = wrapper.find('.post-title');
+        button.trigger('click');
+
+        expect(wrapper.findAll('.post-item').at(0).find('p').text()).toContain('Another Post');
+    });
+
+});
