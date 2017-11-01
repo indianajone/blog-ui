@@ -34,7 +34,7 @@
             </div>
             <div class="field is-grouped">
                 <div class="control">
-                    <button id="submit-btn" class="button is-link">Post</button>
+                    <button id="submit-btn" class="button is-link" v-text="buttonName"></button>
                 </div>
                 <div class="control">
                     <button class="button is-text" type="button" @click="clear">Cancel</button>
@@ -55,6 +55,9 @@
             };
         },
         computed: {
+            buttonName() {
+                return this.isEditMode ? 'Update' : 'Post';
+            },
             isEditMode() {
                 return this.$route.name === 'EditPost';
             },
@@ -87,17 +90,21 @@
                     this.image = files[0];
                 }
             },
-            async createPost() {
-                const formData = new FormData();
-                formData.append('title', this.title);
-                formData.append('body', this.body);
-
-                if (this.image) {
-                    formData.append('image', this.image);
-                }
-
+            async createPost(data) {
                 try {
-                    await this.$http.post('/posts', formData, {
+                    await this.$http.post('/posts', data, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    });
+                } catch (e) {
+                    console.error(e);
+                }
+            },
+            async updatePost(data) {
+                try {
+                    const { id } = this.$route.params;
+                    await this.$http.put(`/posts/${id}`, data, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
@@ -107,7 +114,15 @@
                 }
             },
             submit() {
-                this.createPost().then(() => {
+                const formData = new FormData();
+                formData.append('title', this.title);
+                formData.append('body', this.body);
+
+                if (this.image) {
+                    formData.append('image', this.image);
+                }
+
+                this[this.isEditMode ? 'updatePost' : 'createPost'](formData).then(() => {
                     this.$router.push('/');
                 });
             },
